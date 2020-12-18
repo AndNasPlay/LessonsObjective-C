@@ -31,6 +31,14 @@ int calculateDivision(int a, int b) {
     return a / b;
 }
 
+void humanPrint(int age, int gender, NSString *name) {
+    if (gender == 0) {
+        NSLog(@"\n Имя: %@ \n Возраст: %d \n Пол: мужчина", name, age);
+    } else {
+        NSLog(@"\n Имя: %@ \n Возраст: %d \n Пол: женщина", name, age);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     
     // 1. Создать массив строк и вывести его в консоль используя цикл.
@@ -70,12 +78,12 @@ int main(int argc, const char * argv[]) {
     typedef struct  {
         __unsafe_unretained NSString *Name;
         NSInteger Age;
-        NS_ENUM(NSUInteger, Gender) {
+        NS_ENUM(NSInteger, Gender) {
             man = 0,
             woman = 1,
         };
     }Human;
-        
+
     Human stefan;
     stefan.Age = 19;
     stefan.Gender = 0;
@@ -90,10 +98,10 @@ int main(int argc, const char * argv[]) {
     george.Age = 44;
     george.Gender = 0;
     george.Name = @"George";
-        
-    NSLog(@"\n Имя: %@ \n Возраст: %ld \n Пол: %ld", stefan.Name, (long)stefan.Age, stefan.Gender);
-    NSLog(@"\n Имя: %@ \n Возраст: %ld \n Пол: %ld", yulia.Name, (long)yulia.Age, yulia.Gender);
-    NSLog(@"\n Имя: %@ \n Возраст: %ld \n Пол: %ld", george.Name, (long)george.Age, george.Gender);
+    
+    humanPrint(stefan.Age, stefan.Gender, stefan.Name);
+    humanPrint(yulia.Age, yulia.Gender, yulia.Name);
+    humanPrint(george.Age, george.Gender, george.Name);
     
     return 0;
 }
