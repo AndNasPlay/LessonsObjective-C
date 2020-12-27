@@ -10,7 +10,7 @@
 #import "Student.h"
 
 int main(int argc, const char * argv[]) {
-    
+        
     int newAge = 10;
     
     Student *studentOne = [[Student alloc] initWithUpAge:&newAge];
