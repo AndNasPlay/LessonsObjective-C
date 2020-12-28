@@ -33,14 +33,20 @@
 
 @end
 
-
-
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self config];
 }
+
+- (void)lableEasy:(UILabel*)testLable {
+    testLable.textColor = [UIColor whiteColor];
+    testLable.text = @"0";
+    testLable.font = [UIFont systemFontOfSize:40.0 weight:UIFontWeightLight];
+    testLable.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:testLable];
+};
 
 - (void)config {
     self.view.backgroundColor =[UIColor colorWithRed:100.0/255.0 green:135.0/255.0 blue:191.0/255.0 alpha:1.0];
@@ -56,7 +62,7 @@
     self.paddleTop = top;
     
     UIImageView *bottom = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"paddleBottom"]];
-    bottom.frame = CGRectMake(30, HALF_SCREEN_HEIGHT - 90, 90, 60);
+    bottom.frame = CGRectMake(30, SCREEN_HEIGHT - 90, 90, 60);
     bottom.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:bottom];
     self.paddleBottom = bottom;
@@ -64,26 +70,17 @@
     UIView *ball = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x, self.view.center.y, 20, 20)];
     ball.backgroundColor = [UIColor whiteColor];
     ball.layer.cornerRadius = 10.0;
-    ball.hidden = YES;
+    ball.hidden = NO;
     [self.view addSubview:ball];
     self.ballView = ball;
     
     UILabel *topScore = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 70.0, HALF_SCREEN_HEIGHT - 70.0, 50.0, 50.0)];
-    topScore.textColor = [UIColor whiteColor];
-    topScore.text = @"0";
-    topScore.font = [UIFont systemFontOfSize:40.0 weight:UIFontWeightLight];
-    topScore.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:topScore];
+    [self lableEasy:topScore];
     self.scoreTop = topScore;
     
     UILabel *bottomScore = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 70.0, HALF_SCREEN_HEIGHT + 20.0, 50.0, 50.0)];
-    bottomScore.textColor = [UIColor whiteColor];
-    bottomScore.text = @"0";
-    bottomScore.font = [UIFont systemFontOfSize:40.0 weight:UIFontWeightLight];
-    bottomScore.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:bottomScore];
+    [self lableEasy:bottomScore];
     self.scoreBottom = bottomScore;
 }
-
 
 @end
